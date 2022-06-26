@@ -78,3 +78,19 @@ Insights from figure indicate that :
 
 ![2_productive_author](https://github.com/Wentemi/EJ/blob/main/folder/Authors.JPG)
 
+## Conceptual Structure
+
+In the steps below , I explore the conceptual structure of topics using the authors keywords definition. To get a more resolute insight I excluded the terms "*environmental justice*" and "*sustainability"*. The `conceptualStructure` function implements a natural language processing algorithm to
+extract and cluster terms. The function also provides options of the dimensionality reduction techniques including Multidimensional Scaling (MDS), Correspondence Analysis (CA) or Multiple Correspondence Analysis (MCA). After a number of exploratory steps I decided to use the MCA approach, since it
+provided the most intuitive insights about the concepts. I also set the max number of clusters to 5 based insight gleaned from the previous exploratory exercise.
+
+The high-level insights from **conceptual structure map**, indicate that the topics in the bottom-right corner can be characterized as "climate justice" since it is closely correlated with the term "*climate change*". Two themes emerge in the top right corner for which characterizes them as topics related to "social and
+justice movement" and "racial movement". Finally, the top-left and bottom-left corner are characterized as topic related to "environmental and health concerns" and "health implications and interventions". 
+![](https://github.com/Wentemi/EJ/blob/main/folder/ConceptualStructure.JPG)
+Note the dendrogram below complements  the conceptual structure figure above
+![](https://github.com/Wentemi/EJ/blob/main/folder/Dendrogram.JPG)
+
+Pivotal authors and articles related to the cluster are shown in the **factorial maps** below. For example the results show that the article by [Spencer-Hwang etal 2016](https://muse.jhu.edu/article/644530/figure/tab04). is one of the the highest contributor to the variance of the "health implications and interventions" cluster. In addition, the paper by [O'Fallon and Dearry
+2002](https://pubmed.ncbi.nlm.nih.gov/11929724/) is one of the highly ranked cited documents in the "health implications and interventions" clusters. Without going into details I was able to use this step make recommendations about the potential experts related to the themes.
+![](https://github.com/Wentemi/EJ/blob/main/folder/factorialmap.JPG)
+

@@ -67,10 +67,7 @@ M_USA<-M_USA%>%filter(PY>1999)
 desc_usa<-biblioAnalysis(M_USA,sep=";")
 summary(desc_usa)
 ```
-The code below provides a detailed overview of articles contained data set. The high level insights include :
-
-
-The command above provides a summary of the metadata of published EJ literature. For brevity, the figures below provide a summary of trend of publications with the iinfluential authors. 
+The command above provides a summary of the metadata of published EJ literature. For brevity, the figures below provide a summary of trend of publications with the influential authors. 
 The results spanning from the 1992 to 2021  the EJ literature has been growing at rate of 23% per annum. Increasing from just 1 article in 1992 to 413 in the year 2021.
 ![1_growthrate](https://www.viator.com/tours/Cancun/Turibus-Hop-on-Hop-off-City-Tour-Cancun/d631-64034P11)
 

@@ -86,11 +86,23 @@ provided the most intuitive insights about the concepts. I also set the max numb
 
 The high-level insights from **conceptual structure map**, indicate that the topics in the bottom-right corner can be characterized as "climate justice" since it is closely correlated with the term "*climate change*". Two themes emerge in the top right corner for which characterizes them as topics related to "social and
 justice movement" and "racial movement". Finally, the top-left and bottom-left corner are characterized as topic related to "environmental and health concerns" and "health implications and interventions". 
-![](https://github.com/Wentemi/EJ/blob/main/folder/ConceptualStructure.JPG)
+![concept](https://github.com/Wentemi/EJ/blob/main/folder/ConceptualStructure.jpeg)
+
 Note the dendrogram below complements  the conceptual structure figure above
-![](https://github.com/Wentemi/EJ/blob/main/folder/Dendrogram.JPG)
+
+![dendro](https://github.com/Wentemi/EJ/blob/main/folder/Dendrogram.jpeg)
 
 Pivotal authors and articles related to the cluster are shown in the **factorial maps** below. For example the results show that the article by [Spencer-Hwang etal 2016](https://muse.jhu.edu/article/644530/figure/tab04). is one of the the highest contributor to the variance of the "health implications and interventions" cluster. In addition, the paper by [O'Fallon and Dearry
 2002](https://pubmed.ncbi.nlm.nih.gov/11929724/) is one of the highly ranked cited documents in the "health implications and interventions" clusters. Without going into details I was able to use this step make recommendations about the potential experts related to the themes.
-![](https://github.com/Wentemi/EJ/blob/main/folder/factorialmap.JPG)
+![facto](https://github.com/Wentemi/EJ/blob/main/folder/factorialmap.jpeg)
+
+## Topic modeling
+
+The abstract of the articles embody a rich source of high-level insights related to the studies. I decided to apply topic modeling to abstract to glean a more nuanced perspective on underlying topics related EJ literature. For this step I applied the `stm` (Structural Topic Model). According the
+[Roberts etal 2016](https://cran.r-project.org/web/packages/stm/index.html), structural topic modeling is a general natural language processing framework for identifying topic with document-level covariate information, which can improve inference and qualitative interpretability by affecting topical
+prevalence, topic content, or both.
+
+In the steps below, I filtered abstracts and publication years associated with the articles and pre-processed the data suitable for the `stm` package. It important to note, the publications year will be operationalized as a co-variate for predicting prevalence of topics. The `textProcessor()` to
+stem and remove general and custom stopwords. While the `prepDocuments()` function was used to structure, index and remove lower frequency words.
+
 

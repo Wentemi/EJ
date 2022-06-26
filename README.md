@@ -102,7 +102,7 @@ The abstract of the articles embody a rich source of high-level insights related
 [Roberts etal 2016](https://cran.r-project.org/web/packages/stm/index.html), structural topic modeling is a general natural language processing framework for identifying topic with document-level covariate information, which can improve inference and qualitative interpretability by affecting topical
 prevalence, topic content, or both.
 
-In the steps below, I filtered abstracts and publication years associated with the articles and pre-processed the data suitable for the `stm` package. It important to note, the publications year will be operationalized as a co-variate for predicting prevalence of topics. The `textProcessor()` to
+In the steps below, I filtered abstracts and publication years associated with the articles and pre-processed the data suitable for the `stm` package. It important to note, the publications year will be operationalized as a co-variate to predict prevalence of topics. The `textProcessor()` to
 stem and remove general and custom stopwords. While the `prepDocuments()` function was used to structure, index and remove lower frequency words.
 
 

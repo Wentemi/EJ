@@ -67,8 +67,13 @@ M_USA<-M_USA%>%filter(PY>1999)
 desc_usa<-biblioAnalysis(M_USA,sep=";")
 summary(desc_usa)
 ```
-The command above provides a summary of the metadata of published EJ literature. For brevity, the figures below provide a summary of trend of publications with the influential authors. 
-The results spanning from the 1992 to 2021  the EJ literature has been growing at rate of 23% per annum. Increasing from just 1 article in 1992 to 413 in the year 2021.
+The code snippet above provides a detailed summary of the metadata of published EJ literature. For brevity, the figures below provide a summary of trend of publications with the influential authors. 
+Insights from figure indicate that : 
+1.  The literature on EJ have progressively increased at rate of an annual rate of 13.9%.
+2.  [GRINESKI S.](https://faculty.utah.edu/u6016976-SARA_ELIZABETH_GRINESKI/hm/index.hml) and [COLLINS T.](https://faculty.utah.edu/u0201634-TIMOTHY_WILLIAM_COLLINS/research/index.hml) are most productive author in the EJ literature space with 54 and 48 articles respectively.
+3.  The top 2 cited articles are [WOLCH etal 2014](https://www.sciencedirect.com/science/article/pii/S0169204614000310) and [SCHLOSBERG etal 2007](https://oxford.universitypressscholarship.com/view/10.1093/acprof:oso/9780199286294.001.0001/acprof-9780199286294) with 1488 and 1028 citation
+    respectively.
+
 ![1_growthrate](https://github.com/Wentemi/EJ/blob/main/folder/2_productive_author.JPG)
 
 ![2_productive_author]()

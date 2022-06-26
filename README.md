@@ -74,7 +74,7 @@ Insights from figure indicate that :
 3.  The top 2 cited articles are [WOLCH etal 2014](https://www.sciencedirect.com/science/article/pii/S0169204614000310) and [SCHLOSBERG etal 2007](https://oxford.universitypressscholarship.com/view/10.1093/acprof:oso/9780199286294.001.0001/acprof-9780199286294) with 1488 and 1028 citation
     respectively.
 
-![1_growthrate](https://github.com/Wentemi/EJ/blob/main/folder/2_productive_author.JPG)
+![1_growthrate](https://github.com/Wentemi/EJ/blob/main/folder/growthrate.JPG)
 
-![2_productive_author]()
+![2_productive_author](https://github.com/Wentemi/EJ/blob/main/folder/Authors.JPG)
 

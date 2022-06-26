@@ -69,7 +69,7 @@ summary(desc_usa)
 ```
 The command above provides a summary of the metadata of published EJ literature. For brevity, the figures below provide a summary of trend of publications with the influential authors. 
 The results spanning from the 1992 to 2021  the EJ literature has been growing at rate of 23% per annum. Increasing from just 1 article in 1992 to 413 in the year 2021.
-![1_growthrate]([https://www.viator.com/tours/Cancun/Turibus-Hop-on-Hop-off-City-Tour-Cancun/d631-64034P11](https://github.com/Wentemi/EJ/blob/main/folder/1_growthrate.JPG))
+![1_growthrate](https://github.com/Wentemi/EJ/blob/main/folder/2_productive_author.JPG)
 
 ![2_productive_author]()
 

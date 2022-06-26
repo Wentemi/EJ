@@ -98,11 +98,23 @@ Pivotal authors and articles related to the cluster are shown in the **factorial
 
 ## Topic modeling
 
-The abstract of the articles embody a rich source of high-level insights related to the studies. I decided to apply topic modeling to abstract to glean a more nuanced perspective on underlying topics related EJ literature. For this step I applied the `stm` (Structural Topic Model). According the
+The abstract of the articles embody a rich source of high-level insights related to the studies. I decided to apply topic modeling to abstract to glean a more nuanced perspective on underlying topics related EJ literature. For this step I applied the `stm` (Structural Topic Model). According to the
 [Roberts etal 2016](https://cran.r-project.org/web/packages/stm/index.html), structural topic modeling is a general natural language processing framework for identifying topic with document-level covariate information, which can improve inference and qualitative interpretability by affecting topical
 prevalence, topic content, or both.
 
 In the steps below, I filtered abstracts and publication years associated with the articles and pre-processed the data suitable for the `stm` package. It important to note, the publications year will be operationalized as a co-variate to predict prevalence of topics. The `textProcessor()` to
 stem and remove general and custom stopwords. While the `prepDocuments()` function was used to structure, index and remove lower frequency words.
+
+```{r, message=FALSE, warning=FALSE,results='hide'}
+M_lite<-M_USA%>%select(PY,AB)%>% filter(PY>2000)
+#M_USA$PY
+custom_stop<-c("research","analysis","taylor","francis","elsevier","find","studi*",
+               "article","data","literat*","qualitati*","-*","almost","china","brazil*")
+EJ_processed <- textProcessor(M_lite$AB, metadata = M_lite,customstopwords=custom_stop) 
+out <- prepDocuments(EJ_processed$documents, EJ_processed$vocab, EJ_processed$meta,lower.thresh=0.2)
+docs <- out$documents
+vocab <- out$vocab
+meta <- out$meta
+```
 
 

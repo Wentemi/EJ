@@ -4,7 +4,7 @@ During the summer of 2021, I worked as research fellow at the **NATIONAL ACADEMI
 Justice have been central part of formulating policies in the USA. The core principle EJ driven policies is to ensure the equitable distribution of resources and minimize the disproportionate impact of specific environmental and health risk on vulnerable communities . The scholarly literature on EJ
 has also received major attention from a multitude of the academic disciplines due to the multifaceted nature of EJ issues in the USA.
 
-The code and summary below provides a step-by-step process I applied to identifying salient topics and experts in the field of environmental justices. The major steps involved a bibliometric analysis to identify conceptual structure of topics and identify influential authors related to these topics.
+The code and summary below provides a step-by-step process I applied to identifying salient topics and experts in the field of environmental justice. The major steps involved a bibliometric analysis to identify conceptual structure of topics and identify influential authors related to these topics.
 Finally I applied structural topic modeling to provide a more detailed overview of the EJ topics.
 
 ## Authors
@@ -117,15 +117,57 @@ vocab <- out$vocab
 meta <- out$meta
 ```
 For the code snippet below,  I used the `searchK()` function to explore and select number of optimal topic to be modeled. The selection of the number of topics is evaluate using `exclusivity`, `semantic coherence`, `heldout likelihood`, and `residual dispersion`. 
-
-The plot of residual dispersion and hold-out likelihood are often used as the first order metric for evaluating the number of topics. Higher values of residual dispersion implies the number of topics is set too low, because the latent topcis are not able to account for the overdispersion[cite](https://rdrr.io/cran/stm/man/checkResiduals.html). The held-out probability is cross-validation which measure how well dataset is generalizable. In evaluating the topics is it ideal to have a high hold-out likelihood versus low residual dispersion. Comparing these two metric in the graph below does'nt necessary provide an intuitive insight optimal number of topics. 
-![plots](https://github.com/Wentemi/EJ/blob/main/folder/searchK.jpeg)
-
-Semantic coherence measures the quality of how the model tracks the probable words under a topic co-occur within the same document. In other words, the semantic coherence measures the internal consistency of words within a topic. The exclusivity on the other hand measures the extent to which the top ranked words in a topic are exclusive to that topic.Essentially, the exclusivity is a metric that measures the external validity of a topic compared to other topics. It worth noting that the semantic coherence and exclusivity tend to be anti-correlated, as such selecting the number of topic using both metrics require some value judgement on the part of the researcher on how to balance the trade-offs. 
-
 ```
 find1<-searchK(docs, vocab, K = c(5:15), prevalence=~ PY, data=meta,set.seed(9999), verbose=TRUE)
 print(find1$results)
 options(repr.plot.width=6, repr.plot.height=6)
 plot(find1)
 ```
+The plot of residual dispersion and hold-out likelihood are often used as the first order metric for evaluating the number of topics. Higher values of residual dispersion implies the number of topics is set too low, because the latent topcis are not able to account for the overdispersion[cite](https://rdrr.io/cran/stm/man/checkResiduals.html). The held-out probability is cross-validation which measure how well dataset is generalizable. In evaluating the topics is it ideal to have a high hold-out likelihood versus low residual dispersion. Comparing these two metric in the graph below does'nt necessary provide an intuitive insight optimal number of topics. 
+
+![plots](https://github.com/Wentemi/EJ/blob/main/folder/searchK.jpeg)
+
+The comparison of semantic coherence and exclusivity can provide instructive insights about the number of topic selection.Semantic coherence measures the quality of how the model tracks the co-occurence of probable words under a topic co-occur within same documents. In other words, the semantic coherence measures the internal consistency of words within a topic. The exclusivity on the other hand measures the extent to which the top ranked words in a topic are exclusive to that topic.Essentially, the exclusivity is a metric that measures the external validity of a topic compared to other topics. It worth noting that the semantic coherence and exclusivity tend to be anti-correlated, as such selecting the number of topic using both metrics require some value judgement on the part of the researcher on how to balance the trade-offs. The results and code for comparing the semantic coherence against the exclusivity is show below. The candidate K values are highlight in the graphs. In the steps below I will use K=10 to explore the salient topics associated with the abstracts. 
+
+```
+df<-find1$results %>%mutate(K=as.factor(K))
+df %>% ggplot(aes(semcoh,exclus,col=factor(K)))+geom_point(size=5)+
+  geom_mark_circle(aes(filter = K %in% c(7,9, 10)), 
+                   col = "red", description = "Potential candidates") +
+  labs(x = "Semantic Coherence", y = "Exclusivity") +
+  theme(legend.position = "bottom")
+`````
+
+
+````
+custom_stop<-c("research","analysis","taylor","francis","elsevier","find","studi*",
+               "article","data","literat*","qualitati*","-*","almost","china","brazil*")
+EJ_processed <- textProcessor(M_lite$AB, metadata = M_lite,customstopwords=custom_stop) 
+out <- prepDocuments(EJ_processed$documents, EJ_processed$vocab, EJ_processed$meta,lower.thresh=0.2)
+docs <- out$documents
+vocab <- out$vocab
+meta <- out$meta
+````
+The code below executes the topic modeling using the publication years are co-variate to predict the prevalence of the topic. The breakdown of the top 5 words associate with the 10 topics is shown the graphs below. Clearly the results from the topic model provides a more naunced perspective on EJ.The stm results complements the conceptual structure discussed up by highlighting details about the spatial resolution (for example Topic 10 and Topic 6), cultural (i.e.Topic 3) natural (i.e. Topic 7) and source of pollutions (i.e. Topic 4) dimensions of EJ research.
+
+``````
+model_fit <- stm(documents = out$documents, vocab = out$vocab, K = 10, max.em.its = 75, data = out$meta,prevalence = ~as.numeric(PY), init.type = "Spectral")
+td_beta <- tidy(model_fit)
+
+td_beta %>%
+    group_by(topic) %>%
+    top_n(5, beta) %>%
+    ungroup() %>%
+    mutate(topic = paste0("Topic ", topic),
+           term = reorder_within(term, beta, topic)) %>%
+    ggplot(aes(term, beta, fill = as.factor(topic))) +
+    geom_col(alpha = 0.8, show.legend = FALSE) +
+    facet_wrap(~ topic, scales = "free_y",ncol=5) +
+    coord_flip() +
+    scale_x_reordered() +
+    labs(x = NULL, y = expression(beta),
+         title = "Highest word probabilities for each topic",
+         subtitle = "Different words are associated with EJ topics")
+ `````````
+ ------------------- Not Complete
+ 

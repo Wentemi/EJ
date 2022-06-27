@@ -128,7 +128,7 @@ The plot of residual dispersion and hold-out likelihood are often used as the fi
 ![plots](https://github.com/Wentemi/EJ/blob/main/folder/searchK.jpeg)
 
 The comparison of semantic coherence and exclusivity can provide instructive insights about the number of topic selection.Semantic coherence measures the quality of how the model tracks the co-occurence of probable words under a topic co-occur within same documents. In other words, the semantic coherence measures the internal consistency of words within a topic. The exclusivity on the other hand measures the extent to which the top ranked words in a topic are exclusive to that topic.Essentially, the exclusivity is a metric that measures the external validity of a topic compared to other topics. It worth noting that the semantic coherence and exclusivity tend to be anti-correlated, as such selecting the number of topic using both metrics require some value judgement on the part of the researcher on how to balance the trade-offs. The results and code for comparing the semantic coherence against the exclusivity is show below. The candidate K values are highlight in the graphs. In the steps below I will use K=10 to explore the salient topics associated with the abstracts. 
-
+ ![exclusitivity](https://github.com/Wentemi/EJ/blob/main/folder/plots_exclusivity.jpeg)
 ```
 df<-find1$results %>%mutate(K=as.factor(K))
 df %>% ggplot(aes(semcoh,exclus,col=factor(K)))+geom_point(size=5)+
@@ -158,6 +158,6 @@ td_beta %>%
          title = "Highest word probabilities for each topic",
          subtitle = "Different words are associated with EJ topics")
  `````````
- ![exclusitivity](https://github.com/Wentemi/EJ/blob/main/folder/plots_exclusivity.jpeg)
+![plots2](https://github.com/Wentemi/EJ/blob/main/folder/topic_k10.jpeg)
  ------------------- Not Complete
  

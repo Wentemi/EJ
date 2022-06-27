@@ -159,5 +159,6 @@ td_beta %>%
          subtitle = "Different words are associated with EJ topics")
  `````````
 ![plots2](https://github.com/Wentemi/EJ/blob/main/folder/topic_k10.jpeg)
- ------------------- Not Complete
+
+------------------- Not Complete
  

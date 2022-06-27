@@ -137,17 +137,6 @@ df %>% ggplot(aes(semcoh,exclus,col=factor(K)))+geom_point(size=5)+
   labs(x = "Semantic Coherence", y = "Exclusivity") +
   theme(legend.position = "bottom")
 `````
-![exclusitivity](https://github.com/Wentemi/EJ/blob/main/folder/plots_exclusivity.jpeg)
-
-````
-custom_stop<-c("research","analysis","taylor","francis","elsevier","find","studi*",
-               "article","data","literat*","qualitati*","-*","almost","china","brazil*")
-EJ_processed <- textProcessor(M_lite$AB, metadata = M_lite,customstopwords=custom_stop) 
-out <- prepDocuments(EJ_processed$documents, EJ_processed$vocab, EJ_processed$meta,lower.thresh=0.2)
-docs <- out$documents
-vocab <- out$vocab
-meta <- out$meta
-````
 The code below executes the topic modeling using the publication years are co-variate to predict the prevalence of the topic. The breakdown of the top 5 words associate with the 10 topics is shown the graphs below. Clearly the results from the topic model provides a more naunced perspective on EJ.The stm results complements the conceptual structure discussed up by highlighting details about the spatial resolution (for example Topic 10 and Topic 6), cultural (i.e.Topic 3) natural (i.e. Topic 7) and source of pollutions (i.e. Topic 4) dimensions of EJ research.
 
 ``````
@@ -169,5 +158,6 @@ td_beta %>%
          title = "Highest word probabilities for each topic",
          subtitle = "Different words are associated with EJ topics")
  `````````
+ ![exclusitivity](https://github.com/Wentemi/EJ/blob/main/folder/plots_exclusivity.jpeg)
  ------------------- Not Complete
  

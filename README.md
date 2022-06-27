@@ -123,7 +123,7 @@ print(find1$results)
 options(repr.plot.width=6, repr.plot.height=6)
 plot(find1)
 ```
-The plot of residual dispersion and hold-out likelihood are often used as the first order metric for evaluating the number of topics. Higher values of residual dispersion implies the number of topics is set too low, because the latent topcis are not able to account for the overdispersion[cite](https://rdrr.io/cran/stm/man/checkResiduals.html). The held-out probability is cross-validation which measure how well dataset is generalizable. In evaluating the topics is it ideal to have a high hold-out likelihood versus low residual dispersion. Comparing these two metric in the graph below does'nt necessary provide an intuitive insight optimal number of topics. 
+The plot of residual dispersion and hold-out likelihood are often used as the first order metric for evaluating the number of topics. Higher values of residual dispersion implies the number of topics is set too low, because the latent topcis are not able to account for the overdispersion[cite](https://rdrr.io/cran/stm/man/checkResiduals.html). The held-out probability is a cross-validation metric which measures how well dataset is generalizable. In evaluating the topics is it ideal to have a high hold-out likelihood versus low residual dispersion. Comparing these two metric in the graph below does'nt necessary provide an intuitive insight optimal number of topics. 
 
 ![plots](https://github.com/Wentemi/EJ/blob/main/folder/searchK.jpeg)
 

@@ -137,7 +137,7 @@ df %>% ggplot(aes(semcoh,exclus,col=factor(K)))+geom_point(size=5)+
   labs(x = "Semantic Coherence", y = "Exclusivity") +
   theme(legend.position = "bottom")
 `````
-
+![exclusitivity](https://github.com/Wentemi/EJ/blob/main/folder/plots_exclusivity.jpeg)
 
 ````
 custom_stop<-c("research","analysis","taylor","francis","elsevier","find","studi*",

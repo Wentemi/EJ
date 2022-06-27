@@ -116,5 +116,16 @@ docs <- out$documents
 vocab <- out$vocab
 meta <- out$meta
 ```
+For the code snippet below,  I used the `searchK()` function to explore and select number of optimal topic to be modeled. The selection of the number of topics is evaluate using `exclusivity`, `semantic coherence`, `heldout likelihood`, and `residual dispersion`. 
 
+The plot of residual dispersion and hold-out likelihood are often used as the first order metric for evaluating the number of topics. Higher values of residual dispersion implies the number of topics is set too low, because the latent topcis are not able to account for the overdispersion[cite](https://rdrr.io/cran/stm/man/checkResiduals.html). The held-out probability is cross-validation which measure how well dataset is generalizable. In evaluating the topics is it ideal to have a high hold-out likelihood versus low residual dispersion. Comparing these two metric in the graph below does'nt necessary provide an intuitive insight optimal number of topics. 
+![plots](https://github.com/Wentemi/EJ/blob/main/folder/searchK.jpeg)
 
+Semantic coherence measures the quality of how the model tracks the probable words under a topic co-occur within the same document. In other words, the semantic coherence measures the internal consistency of words within a topic. The exclusivity on the other hand measures the extent to which the top ranked words in a topic are exclusive to that topic.Essentially, the exclusivity is a metric that measures the external validity of a topic compared to other topics. It worth noting that the semantic coherence and exclusivity tend to be anti-correlated, as such selecting the number of topic using both metrics require some value judgement on the part of the researcher on how to balance the trade-offs. 
+
+```
+find1<-searchK(docs, vocab, K = c(5:15), prevalence=~ PY, data=meta,set.seed(9999), verbose=TRUE)
+print(find1$results)
+options(repr.plot.width=6, repr.plot.height=6)
+plot(find1)
+```
